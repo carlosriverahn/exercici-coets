@@ -1,0 +1,10 @@
+.bg{
+    background-image: url("https://articles-images.sftcdn.net/wp-content/uploads/sites/2/2017/05/45.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-dark {
+    opacity: 80%;
+}
