@@ -8,18 +8,10 @@ class Rocket {
     get getPropellers() {
         return this.propellers;
     }
-    // public get getPropellersInfo(){
-    //     return this.propellersInfo;
-    // }
-    // public set setPropellers(propellers : Propeller[]) {
-    //     this.propellers = propellers;
-    // }
     addPropeller(propellers) {
         this.propellers.push(propellers);
         // this.propellersInfo.push(propellers);
     }
     propellerInfo() {
-    }
-    propellerInfoAll() {
     }
 }

@@ -42,23 +42,20 @@ function decreasePowerx(){
 function infoRocket1(){
     let typeRocket:number = 3;
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
-    let powerMax1 = powerMax(typeRocket);
-    infoRocket(rocket,powerMax1,0);
+    infoRocket(rocket,typeRocket,0);
 }
 
 function infoRocket2(){
     let typeRocket:number = 6;
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
-    let powerMax1 = powerMax(typeRocket);
-    infoRocket(rocket,powerMax1,0);
+    infoRocket(rocket,typeRocket,0);
 }
 
 function infoRocketAll(){
-    let powerMax1 = powerMax(3);
-    infoRocket(undefined,powerMax1,1)
+    infoRocket(undefined,undefined,1)
 }
 
-function powerMax(powerMax : any){
+function powerMax(powerMax : number | Propeller []){
     if(powerMax == 3){
         powerMax= [{propeller:"pp1",power:10},
         {propeller:"pp2",power:30},
@@ -106,20 +103,33 @@ function decrease(typeRocket:number, rocketx?:Rocket | undefined){
         });
     }  
 }
-function infoRocket(rocket:Rocket | undefined, powerMax1:any, identifier:number){
+function infoRocket(rocket:Rocket | undefined, typeRocket:number | undefined, identifier:number){
+    
     let text1:string  = ""
     let text2:string | void= ""
     let data:string = ""
+    let powerMax1:Propeller []= []    
     if (identifier==0){
+        powerMax1 = powerMax(typeRocket!);
         powerMax1.forEach((pp: { power: number; }) => {text1+= pp.power+", "});
         rocket!.propellers.forEach((pp: { power: number; }) => {text2+= pp.power+", "});
         data = `${rocket!.name} Cuenta con ${rocket!.getPropellers.length} propulsores,
                             con una potencia maxima de cada uno ${text1}
-                            y la potencia actual de estos es ${text2}`    
-        console.log(data);
-        (document.getElementById("data")as HTMLInputElement).innerText = data;
+                            y la potencia actual de estos es ${text2} `+ "<br>"    
+        // console.log(data);
     }else if(identifier == 1){
-
+        for(rocket of arrayRockets){
+            powerMax1 = powerMax(rocket.propellers.length);
+            powerMax1.forEach((pp: { power: number; }) => {text1+= pp.power+", "});
+            rocket!.propellers.forEach((pp: { power: number; }) => {text2+= pp.power+", "});
+            data += `${rocket!.name} Cuenta con ${rocket!.getPropellers.length} propulsores,
+            con una potencia maxima de cada uno ${text1}
+            y la potencia actual de estos es ${text2} `+ "<br>"
+            text1 = "";
+            text2 = "";
+            powerMax1.length = 0;
+        }
     }
+    (document.getElementById("data")as HTMLInputElement).innerHTML = data;
 }
     
