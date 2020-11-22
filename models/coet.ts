@@ -14,7 +14,6 @@ class Rocket{
 
     addPropeller(propellers:Propeller){
         this.propellers.push(propellers);
-        // this.propellersInfo.push(propellers);
     }
     
      propellerInfo(){
