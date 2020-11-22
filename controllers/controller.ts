@@ -1,5 +1,10 @@
+// Array para cohetes
 let arrayRockets: Rocket[] = []
-// let i:number = 0;
+
+/*El codigo contiene funciones generales, que a su vez llaman
+a funciones especificas para reducir las lineas de codigo ultilizado*/
+
+// Funciones generales para la creacion de cohetes de 3 y 6 propulsores.
 function createRocket1(){
     let name:string = prompt("Ingresa el nombre de tu cohete")!;
     let numberPropeller:number = 3;
@@ -21,7 +26,7 @@ function createRocket2(){
     }else{
     rocketInstance(name,numberPropeller);}
 }
-
+// Funciones para incrementar potencia.
 function increasePower1(){
     let typeRocket:number = 3;
     let powerMax1 = powerMax(3);
@@ -39,6 +44,7 @@ function increasePowerx(){
     let powerMax1 = powerMax(typeRocket);
     increase(typeRocket,powerMax1,rocketx)
 }
+// Funciones para decrementar potencia.
 function decreasePower1(){
     decrease(3,undefined);
 }
@@ -50,6 +56,7 @@ function decreasePowerx(){
     let rocketx:Rocket = arrayRockets.find(rocket => rocket.name == nameRocket)!;
     decrease(0,rocketx) 
 }
+// Funciones generales para desplegar informacion.
 function infoRocket1(){
     let typeRocket:number = 3;
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
@@ -65,7 +72,7 @@ function infoRocket2(){
 function infoRocketAll(){
     infoRocket(undefined,undefined,1)
 }
-
+// Funcion que regresa cuanto debe tener de potencia maxima cada cohete.
 function powerMax(powerMax : number | Propeller []){
     if(powerMax == 3){
         powerMax= [{propeller:"pp1",power:10},
@@ -81,7 +88,7 @@ function powerMax(powerMax : number | Propeller []){
     }
     return powerMax;
 }
-
+// Funcion con la cual se crean los cohertes, segun el numero de propulsores.
 function rocketInstance(name:string, numberPropeller:number){
     let rocket = new Rocket(name);
     let i:number = 0;
@@ -90,6 +97,7 @@ function rocketInstance(name:string, numberPropeller:number){
         rocket.addPropeller({propeller:"pp"+[i],power:0});
     }
 }
+// Funcion que incrementa la potencia de los propulsores.
 function increase(typeRocket:number | undefined, powerMax1: { power: number; }[],rocketx:Rocket | undefined){
     let i:number = 0;
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
@@ -105,6 +113,7 @@ function increase(typeRocket:number | undefined, powerMax1: { power: number; }[]
         });
     }    
 }
+// Funcion que decrementa la potencia de los propulsores.
 function decrease(typeRocket:number | undefined, rocketx:Rocket | undefined){
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
     if(rocketx != undefined){
@@ -118,6 +127,7 @@ function decrease(typeRocket:number | undefined, rocketx:Rocket | undefined){
         });
     }  
 }
+// Funcion para mostrar informacion de los cohetes.
 function infoRocket(rocket:Rocket | undefined, typeRocket:number | undefined, identifier:number){
     
     let text1:string  = ""

@@ -1,6 +1,6 @@
 "use strict";
+// Array para cohetes
 let arrayRockets = [];
-// let i:number = 0;
 function createRocket1() {
     let name = prompt("Ingresa el nombre de tu cohete");
     let numberPropeller = 3;
