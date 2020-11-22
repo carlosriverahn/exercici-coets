@@ -3,12 +3,23 @@ let arrayRockets: Rocket[] = []
 function createRocket1(){
     let name:string = prompt("Ingresa el nombre de tu cohete")!;
     let numberPropeller:number = 3;
-    rocketInstance(name,numberPropeller);
+    let rocket = arrayRockets.find(rocket => rocket.name == name);
+    if(name == ""){
+        alert("Debes nombrar a tu Rocket para ponerlo en la plataforma de lanzamiento!");
+    }else if(rocket != undefined){
+        alert("Ya existe un cohete con ese nombre.");
+    }else{
+    rocketInstance(name,numberPropeller);}
 }
 function createRocket2(){
     let name:string = prompt("Ingresa el nombre de tu cohete")!;
-    let numberPropeller:number = 6;
-    rocketInstance(name,numberPropeller);
+    let numberPropeller:number = 6;let rocket = arrayRockets.find(rocket => rocket.name == name);
+    if(name == ""){
+        alert("Debes nombrar a tu Rocket para ponerlo en la plataforma de lanzamiento!");
+    }else if(rocket != undefined){
+        alert("Ya existe un cohete con ese nombre.");
+    }else{
+    rocketInstance(name,numberPropeller);}
 }
 
 function increasePower1(){
