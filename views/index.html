@@ -10,48 +10,37 @@
 <body class="bg">
     <div class="container bg-dark text-white">
         <div class="row col-12 m-auto justify-content-center" >
-            <h1 class="col-12 text-center m-3">Plataforma de Lanzamiento de Cohetes</h1>
-            <div class="row col-4 p-3">
+            <h1 class="col-12 text-center m-3">Rocket Launch</h1>
+            <div class="row col-12 col-md-5 p-3 justify-content-center">
                 <h2 class="col-12">Create a Rocket</h2>
-                <label class="col-6" for="rocket1">Create Rocket1</label>
-                <input class="col-6" type="button" name="rocket1" value="rocket1" onclick="createRocket1()">
-                <label class="col-6" for="rocket2">Create Rocket2</label>
-                <input class="col-6" type="button" name="rocket2" value="rocket2" onclick="createRocket2()">
+                <input class="col-10" type="button" name="rocket1" value="Create Rocket1" onclick="createRocket1()">
+                <input class="col-10" type="button" name="rocket2" value="Create Rocket2" onclick="createRocket2()">
             </div>
-            <div class="row col-4 p-3">
+            <div class="row col-12 col-md-5 p-3 justify-content-center">
                 <h2 class="col-12" >Info Rockets</h2>
-                <label class="col-6"  for="rocket1">Info Rocket1</label>
-                <input class="col-6"  type="button" name="rocket1" value="rocket1" onclick="infoRocket1()">
-                <label class="col-6"  for="rocket2">Info Rocket2</label>
-                <input class="col-6"  type="button" name="rocket2" value="rocket2" onclick="infoRocket2()">
-                <label class="col-6"  for="rocketAll">Info all RocketX</label>
-                <input class="col-6"  type="button" name="rocketAll" value="Info all rocket" onclick="infoRocketAll()">
+                <input class="col-10"  type="button" name="rocket1" value="Info Rocket1" onclick="infoRocket1()">
+                <input class="col-10"  type="button" name="rocket2" value="Info Rocket2" onclick="infoRocket2()">
+                <input class="col-10"  type="button" name="rocketAll" value="Info all rocket" onclick="infoRocketAll()">
             </div>
         </div>
         <div class="row col-12 m-auto justify-content-center">
-            <div class="row col-4 p-3">
+            <div class="row col-12 col-md-5 p-3 justify-content-center">
                 <h2 class="col-12">Accelerate Rockets</h2>
-                <label class="col-5" for="rocket1">accelerate Rocket1</label>
-                <input class="col-5" type="button" name="rocket1" value="rocket1" onclick="increasePower1()">
-                <label class="col-5" for="rocket2">accelerate Rocket2</label>
-                <input class="col-5" type="button" name="rocket2" value="rocket2" onclick="increasePower2()">
-                <label class="col-5" for="rocketx">accelerate RocketX</label>
-                <input class="col-5" type="button" name="rocketx" value="rocketx" onclick="increasePowerx()">
-                <input class="col-10" type="text" name="accelerate" id="accelerate" placeholder="Nombre del Cohete a acelerar">
+                <input class="col-10" type="button" name="rocket1" value="accelerate Rocket1" onclick="increasePower1()">
+                <input class="col-10" type="button" name="rocket2" value="accelerate Rocket2" onclick="increasePower2()">
+                <input class="col-10" type="button" name="rocketx" value="accelerate RocketX" onclick="increasePowerx()">
+                <input class="col-10" type="text" name="accelerate" id="accelerate" placeholder="name of the rocket to accelerate">
             </div>
-            <div class="row col-4 p-3">
+            <div class="row col-12 col-md-5 p-3 justify-content-center">
                 <h2 class="col-12"  >Break Rockets</h2>
-                <label class="col-5" for="rocket1">Break Rocket1</label>
-                <input class="col-5" type="button" name="rocket1" value="rocket1" onclick="decreasePower1()">
-                <label class="col-5" for="rocket2">Break Rocket2</label>
-                <input class="col-5" type="button" name="rocket2" value="rocket2" onclick="decreasePower2()">
-                <label class="col-5" for="rocketx">Break RocketX</label>
-                <input class="col-5" type="button" name="rocketx" value="rocketx" onclick="decreasePowerx()">
-                <input class="col-10" type="text" name="break" id="break" placeholder="Nombre del Cohete a frenar">
+                <input class="col-10" type="button" name="rocket1" value="Break Rocket1" onclick="decreasePower1()">
+                <input class="col-10" type="button" name="rocket2" value="Break Rocket2" onclick="decreasePower2()">
+                <input class="col-10" type="button" name="rocketx" value="Break RocketX" onclick="decreasePowerx()">
+                <input class="col-10" type="text" name="break" id="break" placeholder="name of the rocket to brake">
             </div>
         </div>
-        <div>
-            <p id="data"></p>
+        <div class="p-2">
+            <p id="data">The information will be displayed here</p>
         </div>
 
    </div>
