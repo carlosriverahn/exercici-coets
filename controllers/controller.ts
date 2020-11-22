@@ -79,9 +79,12 @@ function rocketInstance(name:string, numberPropeller:number){
         rocket.addPropeller({propeller:"pp"+[i],power:0});
     }
 }
-function increase(typeRocket:number, powerMax1: { power: number; }[],rocketx:Rocket | undefined){
+function increase(typeRocket:number | undefined, powerMax1: { power: number; }[],rocketx:Rocket | undefined){
     let i:number = 0;
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
+    if(rocketx != undefined){
+        rocket = rocketx
+    }
     if(rocket == undefined){
         alert("No hay introducido ningun cohete con esas caracteristicas")
     }else{rocket.propellers.forEach(rocket =>{

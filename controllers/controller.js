@@ -79,6 +79,9 @@ function rocketInstance(name, numberPropeller) {
 function increase(typeRocket, powerMax1, rocketx) {
     let i = 0;
     let rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket);
+    if (rocketx != undefined) {
+        rocket = rocketx;
+    }
     if (rocket == undefined) {
         alert("No hay introducido ningun cohete con esas caracteristicas");
     }
