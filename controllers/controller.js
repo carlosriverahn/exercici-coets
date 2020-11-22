@@ -29,10 +29,10 @@ function increasePowerx() {
     increase(typeRocket, powerMax1, rocketx);
 }
 function decreasePower1() {
-    decrease(3);
+    decrease(3, undefined);
 }
 function decreasePower2() {
-    decrease(6);
+    decrease(6, undefined);
 }
 function decreasePowerx() {
     let nameRocket = document.getElementById("break").value;
@@ -96,11 +96,11 @@ function increase(typeRocket, powerMax1, rocketx) {
 }
 function decrease(typeRocket, rocketx) {
     let rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket);
+    if (rocketx != undefined) {
+        rocket = rocketx;
+    }
     if (rocket == undefined && typeRocket == 0) {
         alert("No hay introducido ningun cohete con esas caracteristicas");
-    }
-    else if (rocketx != undefined) {
-        rocket = rocketx;
     }
     else {
         rocket.propellers.forEach(rocket => {
