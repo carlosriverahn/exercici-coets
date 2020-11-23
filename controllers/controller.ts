@@ -5,9 +5,17 @@ let arrayRockets: Rocket[] = []
 a funciones especificas para reducir las lineas de codigo ultilizado*/
 
 // Funciones generales para la creacion de cohetes de 3 y 6 propulsores.
-function createRocket1(){
-    let name:string = prompt("Ingresa el nombre de tu cohete")!;
-    let numberPropeller:number = 3;
+function createRocket(){
+    let name = prompt("ingresa el nombre de tu cohete")!;
+    let type = (document.getElementById("rocketCreate")as HTMLInputElement).value;
+    let numberPropeller:number = 0;
+    if(type == "32WESSDS"){
+        numberPropeller = 3;
+    }else if(type == "LDSFJA32"){
+        numberPropeller = 6;
+    }else{
+        numberPropeller = parseInt(prompt("Ingresa el numero propulsores")!);
+    }
     let rocket = arrayRockets.find(rocket => rocket.name == name);
     if(name == ""){
         alert("Debes nombrar a tu Rocket para ponerlo en la plataforma de lanzamiento!");
@@ -16,25 +24,10 @@ function createRocket1(){
     }else{
     rocketInstance(name,numberPropeller);}
 }
-function createRocket2(){
-    let name:string = prompt("Ingresa el nombre de tu cohete")!;
-    let numberPropeller:number = 6;let rocket = arrayRockets.find(rocket => rocket.name == name);
-    if(name == ""){
-        alert("Debes nombrar a tu Rocket para ponerlo en la plataforma de lanzamiento!");
-    }else if(rocket != undefined){
-        alert("Ya existe un cohete con ese nombre.");
-    }else{
-    rocketInstance(name,numberPropeller);}
-}
 // Funciones para incrementar potencia.
-function increasePower1(){
+function increasePower(){
     let typeRocket:number = 3;
     let powerMax1 = powerMax(3);
-    increase(typeRocket,powerMax1,undefined)
-}
-function increasePower2(){
-    let typeRocket:number = 6;
-    let powerMax1 = powerMax(6);
     increase(typeRocket,powerMax1,undefined)
 }
 function increasePowerx(){
@@ -45,11 +38,8 @@ function increasePowerx(){
     increase(typeRocket,powerMax1,rocketx)
 }
 // Funciones para decrementar potencia.
-function decreasePower1(){
+function decreasePower(){
     decrease(3,undefined);
-}
-function decreasePower2(){
-    decrease(6,undefined);
 }
 function decreasePowerx(){
     let nameRocket = (document.getElementById("break")as HTMLInputElement).value;
@@ -57,14 +47,8 @@ function decreasePowerx(){
     decrease(0,rocketx) 
 }
 // Funciones generales para desplegar informacion.
-function infoRocket1(){
+function infoRocketX(){
     let typeRocket:number = 3;
-    let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
-    infoRocket(rocket,typeRocket,0);
-}
-
-function infoRocket2(){
-    let typeRocket:number = 6;
     let rocket:Rocket = arrayRockets.find(rocket => rocket.propellers.length == typeRocket)!;
     infoRocket(rocket,typeRocket,0);
 }
@@ -72,6 +56,7 @@ function infoRocket2(){
 function infoRocketAll(){
     infoRocket(undefined,undefined,1)
 }
+
 // Funcion que regresa cuanto debe tener de potencia maxima cada cohete.
 function powerMax(powerMax : number | Propeller []){
     if(powerMax == 3){
@@ -93,6 +78,21 @@ function rocketInstance(name:string, numberPropeller:number){
     let rocket = new Rocket(name);
     let i:number = 0;
     arrayRockets.push(rocket);
+    let powerMax1 : Propeller [] = []
+    powerMax1 = powerMax(numberPropeller!)
+    rocket.propellersInfo = powerMax1;
+    for(let i = 0; i < numberPropeller; i++){
+        let powerMax : Propeller []=[];
+        let propeller:Propeller;
+        let power: number = parseInt(prompt("Ingresa la potencia del propulsor 0-150")!);
+        if(power < 0 && power > 150){
+            alert("La potencia debe estar entre 0 y 150")
+        }else{
+            propeller = {propeller:"pp"[i],power: power}
+            powerMax.push(propeller);
+        }
+        
+    }
     for(i=0; i < numberPropeller; i++){
         rocket.addPropeller({propeller:"pp"+[i],power:0});
     }
@@ -139,17 +139,17 @@ function infoRocket(rocket:Rocket | undefined, typeRocket:number | undefined, id
         powerMax1.forEach((pp: { power: number; }) => {text1+= pp.power+", "});
         rocket!.propellers.forEach((pp: { power: number; }) => {text2+= pp.power+", "});
         data = `${rocket!.name} Cuenta con ${rocket!.getPropellers.length} propulsores,
-                            con una potencia maxima de cada uno ${text1}
-                            y la potencia actual de estos es ${text2} `+ "<br>"    
+        con una potencia maxima de cada uno ${text1} y la potencia actual de estos es ${text2} `
+        + "<br>"    
         // console.log(data);
     }else if(identifier == 1){
         for(rocket of arrayRockets){
             powerMax1 = powerMax(rocket.propellers.length);
             powerMax1.forEach((pp: { power: number; }) => {text1+= pp.power+", "});
             rocket!.propellers.forEach((pp: { power: number; }) => {text2+= pp.power+", "});
-            data += `${rocket!.name} Cuenta con ${rocket!.getPropellers.length} propulsores,
-            con una potencia maxima de cada uno ${text1}
-            y la potencia actual de estos es ${text2} `+ "<br>"
+            data += `${rocket!.name} Cuenta con ${rocket!.getPropellers.length} propulsores,con 
+            una potencia maxima de cada uno ${text1} y la potencia actual de estos es ${text2} `
+            + "<br>"
             text1 = "";
             text2 = "";
             powerMax1.length = 0;

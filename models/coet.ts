@@ -2,7 +2,7 @@
 class Rocket{
     name:string;
     propellers:Propeller [] = new Array();
-    // propellersInfo:Propeller [] = new Array();
+    propellersInfo:Propeller [] = new Array();
 
     public constructor(name:string){
         this.name=name;
@@ -15,8 +15,7 @@ class Rocket{
     addPropeller(propellers:Propeller){
         this.propellers.push(propellers);
     }
-    
-     propellerInfo(){
-    
+    addPropellerInfo(propellers:Propeller){
+        this.propellersInfo.push(propellers);
     }
 }
