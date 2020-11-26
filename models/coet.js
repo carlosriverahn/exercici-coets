@@ -1,8 +1,8 @@
 "use strict";
 class Rocket {
-    // propellersInfo:Propeller [] = new Array();
     constructor(name) {
         this.propellers = new Array();
+        this.propellersInfo = new Array();
         this.name = name;
     }
     get getPropellers() {
@@ -11,6 +11,7 @@ class Rocket {
     addPropeller(propellers) {
         this.propellers.push(propellers);
     }
-    propellerInfo() {
+    addPropellerInfo(propellers) {
+        this.propellersInfo.push(propellers);
     }
 }
