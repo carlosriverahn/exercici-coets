@@ -14,12 +14,12 @@ function createRocket() {
     else if (type == "LDSFJA32") {
         numberPropeller = 6;
     }
-    else {
+    else if (type == "Customize") {
         numberPropeller = parseInt(prompt("Ingresa el numero propulsores"));
     }
     let rocket = arrayRockets.find(rocket => rocket.name == name);
-    if (name == "") {
-        alert("Debes nombrar a tu Rocket para ponerlo en la plataforma de lanzamiento!");
+    if (name == "" || name == null || isNaN(numberPropeller)) {
+        alert("Debes nombrar a tu Rocket y asignarle propulsores, para ponerlo en la plataforma de lanzamiento!");
     }
     else if (rocket != undefined) {
         alert("Ya existe un cohete con ese nombre.");
@@ -92,6 +92,7 @@ function rocketInstance(name, numberPropeller) {
             rocket.addPropeller({ propeller: "pp" + [i], power: 0 });
             rocket.addPropellerInfo(powerMax1[i]);
         }
+        rocketSelection(rocket);
     }
     if (powerMax1 == undefined) {
         for (let i = 0; i < numberPropeller; i++) {
@@ -104,6 +105,7 @@ function rocketInstance(name, numberPropeller) {
                 rocket.addPropellerInfo({ propeller: "pp" + [i], power: power });
             }
         }
+        rocketSelection(rocket);
     }
 }
 // Funcion que incrementa la potencia de los propulsores.
@@ -159,26 +161,13 @@ function infoRocket(rocket, identifier) {
     document.getElementById("data").innerHTML = data;
 }
 let rocketSelection1 = document.querySelectorAll(".rocketSelection");
-function rocketSelection() {
+function rocketSelection(rocket) {
     let rocketSelection = document.querySelectorAll(".rocketSelection");
     let i = 0;
     rocketSelection.forEach(box => {
-        arrayRockets.forEach(rocket => {
-            if (box.childNodes.length <= arrayRockets.length) {
-                for (i = 0; i < arrayRockets.length; i++) {
-                    //  console.log(box.children[i].value)
-                    if (rocket.name != box.children[i].value || box.children[i].value == undefined) {
-                        let option = document.createElement("option");
-                        option.appendChild(document.createTextNode(rocket.name));
-                        box.appendChild(option);
-                    }
-                }
-            }
-        });
+        let option = document.createElement("option");
+        option.appendChild(document.createTextNode(rocket.name));
+        box.appendChild(option);
+        console.log(box.textContent);
     });
 }
-// rocketSelection.addEventListener("click", (event: { target: any; })=>{ 
-//     console.log(event.target);
-//     if(rocketSelection.contains(event.target)){
-//     }
-// });
