@@ -168,6 +168,6 @@ function rocketSelection(rocket) {
         let option = document.createElement("option");
         option.appendChild(document.createTextNode(rocket.name));
         box.appendChild(option);
-        console.log(box.textContent);
+        // console.log(box.textContent);
     });
 }
